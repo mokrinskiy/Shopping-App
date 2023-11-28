@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { makeRequest } from "../makeRequest";
+import { makeRequest } from "../utils/makeRequest";
 
 export function useData(url) {
     const [data, setData] = useState([]);

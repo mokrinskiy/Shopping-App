@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import List from "../components/List";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { useData } from "../hooks/useData";
+import ProductsFilter from "../components/ProductsFilter";
 
 const Products = () => {
     const { id } = useParams();
@@ -25,66 +27,32 @@ const Products = () => {
     };
 
     return (
-        <div className="flex mx-[40px]">
-            <div className="max-w-[300px] h-auto sticky top-0">
-                <div>
-                    <p className="text-xl">Product Categories</p>
-                    <div className="mt-[30px]">
-                        {data.map((item) => (
-                            <div key={item.id} className="flex items-center">
-                                <input
-                                    type="checkbox"
-                                    className="checkbox checkbox-xs"
-                                    value={item.id}
-                                    onChange={(e) => handleChange(e)}
-                                />
-                                <span className="ml-3">
-                                    {item.attributes.title}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
+        <div className="flex mx-[40px] mb-[40px]">
+            <details className="dropdown lg:hidden">
+                <summary className="m-1 btn w-[50px]">
+                    <FilterAltIcon />
+                </summary>
+                <div className="p-4 shadow-xl menu dropdown-content z-[1] bg-base-100 rounded-box w-[250px]">
+                    <ProductsFilter
+                        data={data}
+                        handleChange={handleChange}
+                        setMaxPrice={setMaxPrice}
+                        setSort={setSort}
+                        maxPrice={maxPrice}
+                    />
                 </div>
-                <div className="mt-[50px]">
-                    <p className="text-xl">Filter by Price</p>
-                    <div className="w-[200px] mt-[30px]">
-                        <input
-                            type="range"
-                            min={0}
-                            max={150}
-                            step={25}
-                            value={maxPrice}
-                            onChange={(e) => setMaxPrice(e.target.value)}
-                            className="range range-xs"
-                        />
-                        <span>0 - {maxPrice} $</span>
-                    </div>
-                </div>
-                <div className="mt-[50px]">
-                    <p className="text-xl">Sort by</p>
-                    <div className="flex flex-col mt-[30px]">
-                        <div className="flex items-center">
-                            <input
-                                type="radio"
-                                name="radio-1"
-                                className="radio"
-                                onChange={() => setSort("asc")}
-                            />
-                            <span className="ml-2">Price (lowest first)</span>
-                        </div>
-                        <div className="flex items-center">
-                            <input
-                                type="radio"
-                                name="radio-1"
-                                className="radio"
-                                onChange={() => setSort("desc")}
-                            />
-                            <span className="ml-2">Price (highest first)</span>
-                        </div>
-                    </div>
-                </div>
+            </details>
+            <div className="w-[300px] h-auto sticky top-0 max-lg:hidden">
+                <ProductsFilter
+                    data={data}
+                    handleChange={handleChange}
+                    setMaxPrice={setMaxPrice}
+                    setSort={setSort}
+                    maxPrice={maxPrice}
+                />
             </div>
-            <div className="max-xl:ml-[80px] ml-[120px]">
+
+            <div className="max-lg:ml-4 ml-[120px] ">
                 <List
                     sort={sort}
                     selectedSubCats={selectedSubCats}

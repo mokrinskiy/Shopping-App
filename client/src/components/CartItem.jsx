@@ -5,7 +5,6 @@ import { removeItem } from "../redux/cartReducer";
 const CartItem = ({ item, dispatch }) => {
     return (
         <div className="card card-side bg-base-100 shadow-md mt-[10px]">
-            {console.log(item)}
             <figure>
                 <img
                     className="w-[200px] h-[200px]"
@@ -16,13 +15,13 @@ const CartItem = ({ item, dispatch }) => {
                 <h2 className="card-title">{item?.title} </h2>
                 <div className="flex justify-between items-center">
                     <div className="card-actions">
-                        {item.amount} x {item.price} ={" "}
-                        {item.amount * item.price}
+                        {item.amount} x {item.price} $ ={" "}
+                        {item.amount * item.price} $
                     </div>
                     <div className="card-actions justify-end">
                         <button
                             onClick={() => dispatch(removeItem(item.id))}
-                            className="btn btn-error btn-circle"
+                            className="btn btn-error btn-circle btn-sm"
                         >
                             <DeleteIcon />
                         </button>

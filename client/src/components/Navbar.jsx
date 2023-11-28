@@ -52,15 +52,17 @@ const NavBar = () => {
                 </div>
                 <div className="navbar-center">
                     <NavLink to={"/"} className="btn btn-ghost text-xl">
-                        Home
+                        VelvetVista
                     </NavLink>
                 </div>
                 <div className="navbar-end">
-                    <Link className="btn btn-circle mx-2 max-lg:btn-sm">
+                    <Link className="btn btn-circle mx-2 max-lg:btn-sm btn-disabled">
                         <SearchIcon />
                     </Link>
                     <div className="indicator">
-                        <span className="indicator-item indicator-top badge badge-secondary p-[7px] right-4">{products.length}</span>
+                        <span className="indicator-item indicator-top badge badge-secondary p-[7px] right-4">
+                            {products.length}
+                        </span>
 
                         <button
                             className="btn btn-circle mx-2 max-lg:btn-sm"
@@ -69,11 +71,13 @@ const NavBar = () => {
                             <ShoppingCartIcon />
                         </button>
                     </div>
-
-                    <Link className="btn btn-circle mx-2 max-lg:btn-sm">
+                    <Link
+                        to={"/wishlist"}
+                        className="btn btn-circle mx-2 max-lg:btn-sm"
+                    >
                         <FavoriteIcon />
                     </Link>
-                    <Link className="btn btn-circle mx-2 max-lg:btn-sm">
+                    <Link className="btn btn-circle mx-2 max-lg:btn-sm btn-disabled">
                         <Person />
                     </Link>
                 </div>

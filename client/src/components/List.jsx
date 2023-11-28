@@ -10,7 +10,7 @@ const List = ({ sort, selectedSubCats, id, maxPrice }) => {
     // &sort=price:${sort}
 
     return (
-        <ul className="grid-cols-4 grid gap-10 max-xl:grid-cols-3 max-lg:grid-cols-2 min-h-screen">
+        <ul className="grid-cols-4 grid gap-10 max-xl:grid-cols-3 max-lg:grid-cols-2 min-h-screen max-sm:grid-cols-1">
             {loading
                 ? "loading..."
                 : data?.map((item) => (

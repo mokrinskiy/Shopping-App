@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Card = ({ item }) => {
+const FeaturedItem = ({ item, index }) => {
     const [secondImage, setSecondImage] = useState(false);
 
     return (
         <Link
             to={`/product/${item.id}`}
-            className="card max-w-[400px] bg-base-100 shadow-xl "
+            key={item.id}
+            className={`card ${
+                index == 0
+                    ? "max-w-[750px] max-h-[850px] max-lg:max-w-[500px] max-lg:h-[550px]"
+                    : "max-w-[500px] h-[550px]"
+            } bg-base-100 shadow-xl mx-2`}
         >
             <figure>
-                {item.isNew && (
-                    <div className="badge badge-secondary absolute top-0 left-0 m-2">
-                        NEW
-                    </div>
-                )}
                 {secondImage ? (
                     <img
                         src={
@@ -37,14 +37,17 @@ const Card = ({ item }) => {
                     />
                 )}
             </figure>
-            <div className="mx-4 pt-2 card-title">
-                <p>{item.attributes.price} $</p>
-            </div>
-            <div className="card-body p-4">
-                <p>{item.attributes.title}</p>
+            {item.attributes.isNew && (
+                <div className="badge badge-secondary absolute top-0 left-0 m-2">
+                    NEW
+                </div>
+            )}
+            <div className="card-body flex items-center flex-row justify-between">
+                <h2 className="card-title">{item.attributes.title}</h2>
+                <button className="btn btn-primary">Check</button>
             </div>
         </Link>
     );
 };
 
-export default Card;
+export default FeaturedItem;

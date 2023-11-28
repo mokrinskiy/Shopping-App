@@ -1,10 +1,9 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, Scrollbar, A11y } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 const Slider = () => {
@@ -16,23 +15,29 @@ const Slider = () => {
     ];
 
     return (
-        <Swiper
-            className="max-h-[1000px] max-lg:h-[1400px] max-lg:w-auto flex justify-center"
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={0}
-            slidesPerView={1}
-            navigation
-            scrollbar={{ draggable: true }}
-        >
-            {images.map((image, index) => (
-                <SwiperSlide>
-                    <img
-                        className="w-full h-full object-cover"
-                        src={images[index]}
-                    />
-                </SwiperSlide>
-            ))}
-        </Swiper>
+        <div className="relative">
+            <Swiper
+                className="max-h-[1000px] max-lg:h-[1400px] max-md:h-[600px] flex justify-center relative"
+                modules={[Navigation, Scrollbar, A11y]}
+                spaceBetween={0}
+                slidesPerView={1}
+                navigation
+                scrollbar={{ draggable: true }}
+            >
+                {images.map((image, index) => (
+                    <SwiperSlide key={index}>
+                        <img
+                            className="w-full h-full object-cover"
+                            src={images[index]}
+                        />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-50">
+                <h1 className="max-lg:text-5xl text-8xl font-bold text-white">VelvetVista</h1>
+            </div>
+        </div>
     );
 };
 

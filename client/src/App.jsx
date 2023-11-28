@@ -4,6 +4,7 @@ import Products from "./pages/Products";
 import Product from "./pages/Product";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import WishList from "./pages/WishList";
 
 const Layout = () => {
     return (
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path: "/product/:id",
                 element: <Product />,
+            },
+            {
+                path: "/wishlist",
+                element: <WishList />,
             },
         ],
     },

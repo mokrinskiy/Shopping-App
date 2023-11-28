@@ -12,8 +12,15 @@ const Cart = () => {
         return total.toFixed(2);
     };
 
+    const handlePayment = async () => {
+        try {
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     return (
-        <div className="w-[600px] p-4 absolute top-0 right-0 mt-[65px] z-50 bg-base-200 rounded-lg shadow-xl mr-1">
+        <div className="max-w-[600px] p-4 absolute top-0 right-0 mt-[65px] z-50 bg-base-200 rounded-lg shadow-xl mx-3">
             <p className="text-xl">Products in your cart</p>
             <div className="mt-[10px]">
                 {products?.map((item) => (
